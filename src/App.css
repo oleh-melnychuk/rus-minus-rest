@@ -24,6 +24,16 @@
   color: white;
 }
 
+.container {
+  margin: 0 auto;
+  width: 100vh;
+  height: 100vh;
+}
+
+.container text {
+  font-size: 12px
+}
+
 .App-link {
   color: #61dafb;
 }
