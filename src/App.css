@@ -51,3 +51,18 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media only screen and (max-width: 600px) {
+  body {
+    background-image: url(https://storage1b.censor.net/images/3/3/9/f/339f1f0c107186dd7e434536f41ef0c8/original.jpg);
+  }
+}
+@media only screen and (min-width: 600px) {
+  body {
+    background-image: url(https://armyinform.com.ua/wp-content/uploads/2022/11/chmobik-rekordsmen-960x540.jpg);
+  }
+}
