@@ -1,47 +1,50 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { PieChart } from 'react-minimal-pie-chart';
+import axios from 'axios'
 
+import React from 'react'
+import { useEffect, useState } from 'react'
+import { PieChart } from 'react-minimal-pie-chart'
 
 const DifferenceChart = () => {
-const [rusData, setRusData] = useState(null)
+  const [rusData, setRusData] = useState(null)
 
-const totalAmount =  689210;
+  const totalAmount = 689210
 
-useEffect(() => {
-    axios.get('https://russianwarship.rip/api/v2/statistics/latest')
-    .then(function ({data: {data: {stats}}}) {
+  useEffect(() => {
+    axios.get('https://russianwarship.rip/api/v2/statistics/latest').then(function ({
+      data: {
+        data: { stats }
+      }
+    }) {
       setRusData(stats)
     })
-}, [])
+  }, [])
 
+  if (!rusData) return <div>Loading</div>
 
-
-
-
-    if(!rusData) return <div>Loading</div>
-
-
-    return(<div className='container'>
-        <h3>Good russians statistics</h3>
-        <p>
-        Good russians - { rusData.personnel_units} <br />
+  return (
+    <div className="container">
+      <h3>Good russians statistics</h3>
+      <p>
+        Good russians - {rusData.personnel_units} <br />
         Rest of them - {totalAmount - rusData.personnel_units}
-        </p>
-        <div className='chart-container'>
-    <PieChart
-    data={[
-      { title: 'Good russians', value: rusData.personnel_units, color: '#E38627' },
-      { title: 'Bad russians', value: totalAmount - rusData.personnel_units, color: '#C13C37' },
-    ]}
-    label={({ dataEntry }) => `${dataEntry.title} - ${Math.round(dataEntry.percentage)} %`}
-    labelPosition={60}
-    viewBoxSize={[100,100]}
-    
-  />
-  </div>
-  </div>);
-
+      </p>
+      <div className="chart-container">
+        <PieChart
+          data={[
+            { title: 'Good russians', value: rusData.personnel_units, color: '#E38627' },
+            {
+              title: 'Bad russians',
+              value: totalAmount - rusData.personnel_units,
+              color: '#C13C37'
+            }
+          ]}
+          label={({ dataEntry }) => `${dataEntry.title} - ${Math.round(dataEntry.percentage)} %`}
+          labelPosition={60}
+          viewBoxSize={[100, 100]}
+        />
+      </div>
+    </div>
+  )
 }
 
 export default DifferenceChart
