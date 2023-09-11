@@ -28,6 +28,7 @@ useEffect(() => {
         Good russians - { rusData.personnel_units} <br />
         Rest of them - {totalAmount - rusData.personnel_units}
         </p>
+        <div className='chart-container'>
     <PieChart
     data={[
       { title: 'Good russians', value: rusData.personnel_units, color: '#E38627' },
@@ -35,8 +36,10 @@ useEffect(() => {
     ]}
     label={({ dataEntry }) => `${dataEntry.title} - ${Math.round(dataEntry.percentage)} %`}
     labelPosition={60}
+    viewBoxSize={[100,100]}
     
   />
+  </div>
   </div>);
 
 }
