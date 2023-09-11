@@ -54,7 +54,7 @@
 
 body {
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 @media only screen and (max-width: 600px) {
   body {
