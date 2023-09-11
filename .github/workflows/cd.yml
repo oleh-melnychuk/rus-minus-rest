@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - master
+      - release-*
+  workflow_dispatch:
+
+name: Production Deploy
+
+jobs:
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 16.20.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.20.0
+
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
