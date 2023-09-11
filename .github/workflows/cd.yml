@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+      - master
+      - release-*
+  workflow_dispatch:
+
+name: Production Deploy
+
+jobs:
+  test:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy changes
+        run: yarn deploy
