@@ -6,7 +6,7 @@ import { PieChart } from 'react-minimal-pie-chart';
 const DifferenceChart = () => {
 const [rusData, setRusData] = useState(null)
 
-const totalAmount =  2039758;
+const totalAmount =  689210;
 
 useEffect(() => {
     axios.get('https://russianwarship.rip/api/v2/statistics/latest')
